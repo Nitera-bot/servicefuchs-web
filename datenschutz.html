@@ -47,7 +47,7 @@
 <ul>
   <li><strong>Fahrzeuge:</strong> Name, Hersteller, Modell, Kennzeichen, Fahrgestellnummer, Antrieb, Reifengröße, Kaufdatum und Kaufpreis, Fotos, Halteranzahl, Archivstatus.</li>
   <li><strong>Einträge:</strong> Reparatur, Wartung, TÜV/HU, Reifen, Unfall, Tuning, Tanken und Laden – mit Datum, km-Stand, Kosten, Werkstatt oder Eigenleistung, Einzelpositionen mit Teilenummern, Notizen, Tags und Garantie.</li>
-  <li><strong>Belege:</strong> Fotos und <abbr title="Portable Document Format">PDF</abbr>-Dateien, die du aufnimmst oder auswählst. Fotos werden beim Aufnehmen auf 1600 Pixel verkleinert. Fotos behalten die Metadaten deiner Kamera-App (EXIF), darunter – wenn du dort die Standortspeicherung eingeschaltet hast – den Aufnahmeort. Die App wertet diese Metadaten nicht aus, entfernt sie aber auch nicht; sie bleiben in Backups, im Drive-Backup und in der Übergabedatei erhalten. Wenn du das nicht möchtest, schalte die Standortspeicherung in deiner Kamera-App aus.</li>
+  <li><strong>Belege:</strong> Fotos und <abbr title="Portable Document Format">PDF</abbr>-Dateien, die du aufnimmst oder auswählst. Fotos werden beim Übernehmen auf 1600 Pixel verkleinert und ohne die Metadaten der Kamera-App (EXIF) gespeichert – also ohne Aufnahmeort, Gerät und Aufnahmezeit. Dadurch stehen diese Angaben auch nicht in Backups, im Drive-Backup oder in der Übergabedatei. PDF-Dateien übernimmt die App unverändert.</li>
   <li><strong>Erinnerungen und Erledigungen</strong> nach Datum, Kilometern oder beidem.</li>
   <li><strong>Reifensätze</strong> mit Größe, DOT-Nummer, Profiltiefe, Kaufdaten und Lagerort.</li>
   <li><strong>Fixkosten, Fahrzeugwerte und km-Stände</strong> für die Statistik.</li>
@@ -154,7 +154,7 @@
 <h2 id="dateien">7. Backups, Übergabedateien und Exporte</h2>
 <ul>
   <li><strong>Backup (.fuchs):</strong> enthält alle Daten der App inklusive Belegen, Einstellungen, Briefkopf und – wenn eingetragen – deinem Tankerkönig-API-Key. Nicht enthalten: PIN-Hash und Einstellungen der App-Sperre, Drive-Einstellungen, Käufe. Die Datei ist mit AES-256-GCM und einem in der App eingebauten Schlüssel verschlüsselt: Schutz vor zufälligem Mitlesen, kein Schutz vor gezieltem Angriff (siehe <a href="#drive">Abschnitt 6</a>).</li>
-  <li><strong>Fahrzeugübergabe (.fuchs):</strong> enthält nur das gewählte Fahrzeug mit Steckbrief, Fotos, Einträgen samt Beträgen, Belegen, Reifensätzen, Erinnerungen und km-Ständen sowie die Halteranzahl. Nie enthalten: Kaufpreis und Kaufdatum, Fixkosten, Fahrzeugwerte, Kostenteilung, Logbuch, Einstellungen, API-Key, Favoriten, Preisalarme, Käufe. Verschlüsselt wie das Backup. Du verschickst die Datei selbst, zum Beispiel über den Teilen-Dialog; der Empfänger importiert sie in seiner App. Fotos und Belege gehen mit ihren Metadaten an den Empfänger (<a href="#app">Abschnitt 3</a>).</li>
+  <li><strong>Fahrzeugübergabe (.fuchs):</strong> enthält nur das gewählte Fahrzeug mit Steckbrief, Fotos, Einträgen samt Beträgen, Belegen, Reifensätzen, Erinnerungen und km-Ständen sowie die Halteranzahl. Nie enthalten: Kaufpreis und Kaufdatum, Fixkosten, Fahrzeugwerte, Kostenteilung, Logbuch, Einstellungen, API-Key, Favoriten, Preisalarme, Käufe. Verschlüsselt wie das Backup. Du verschickst die Datei selbst, zum Beispiel über den Teilen-Dialog; der Empfänger importiert sie in seiner App. Fotos gehen ohne Kamera-Metadaten an den Empfänger (<a href="#app">Abschnitt 3</a>); PDF-Belege unverändert.</li>
   <li><strong>PDF und CSV:</strong> Dokumentation, Verkaufsmappe, CSV-Tabelle und Fahrtenbuch (Export des Logbuchs) sind <strong>unverschlüsselt</strong>. Die Verkaufsmappe enthält keine Preise. Mit Pro steht dein Briefkopf im PDF, und die CSV kann die Kostenteilung mit den Namen der Beteiligten enthalten.</li>
   <li><strong>Dein Speicherort, deine Verantwortung:</strong> Du wählst im Android-Dateidialog oder im Teilen-Dialog, wo eine Datei landet. Speicherst du sie in einer Cloud (etwa Google Drive oder Dropbox) oder sendest sie per Messenger oder E-Mail, gilt die Datenschutzerklärung dieses Anbieters. Ich erhalte diese Dateien nicht.</li>
 </ul>
@@ -204,7 +204,7 @@
 
 <h2 id="aenderungen">12. Änderungen dieser Erklärung</h2>
 <p>Wenn die App neue Funktionen bekommt oder sich Dienste Dritter ändern, passe ich diese Erklärung an. Die aktuelle Fassung findest du immer auf dieser Seite, über den Link im Play Store und in der App unter Einstellungen → Über. Das Datum der letzten Änderung steht hier:</p>
-<p><strong>Stand: 26. Oktober 2026</strong></p>
+<p><strong>Stand: 27. Oktober 2026</strong></p>
   </main>
 
   <footer>
