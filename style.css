@@ -1,0 +1,333 @@
+/* Servicefuchs – Webseite. Reines CSS, keine externen Ressourcen, kein JavaScript.
+   Semantisches HTML soll ohne Klassen gut aussehen. Einzige Klasse: .button (Knopf). */
+
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #1f1b18;
+  --muted: #5f5853;
+  --accent: #bf4300;        /* Orange wie die App, abgedunkelt: 5,2:1 auf Weiß (WCAG AA braucht 4,5:1 für Text und Links) */
+  --accent-soft: #fff1e6;   /* Flächen mit Orange-Hauch */
+  --surface: #faf6f2;
+  --border: #e3dcd5;
+  --focus: #0b57d0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15120f;
+    --fg: #ece6df;
+    --muted: #aea69d;
+    --accent: #ffb68a;
+    --accent-soft: #2a1f16;
+    --surface: #1e1915;
+    --border: #3b332c;
+    --focus: #9ec3ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 720px;
+  padding: 0 16px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+/* Kopf mit Fuchs, Name und Navigation */
+body > header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+body > header > a {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li + li::before {
+  content: "·";
+  content: "·" / ""; /* Trennpunkt ohne Alternativtext – Screenreader überspringen ihn; ältere Browser nehmen die Zeile darüber */
+  margin-right: 0.75rem;
+  color: var(--muted);
+}
+
+nav a {
+  color: var(--fg);
+  text-decoration: none;
+  padding: 0.25rem 0;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav a[aria-current="page"] {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Hauptbereich und Hero */
+main {
+  padding-bottom: 1rem;
+}
+
+main > header {
+  padding: 2.5rem 0 1.5rem;
+}
+
+main > header p {
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin: 0 0 0.6em;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  margin-top: 1rem;
+}
+
+h2 {
+  font-size: 1.45rem;
+  margin-top: 2.25rem;
+  padding-top: 0.4rem;
+  border-top: 3px solid var(--accent);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+}
+
+section {
+  margin: 0 0 2rem;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+blockquote,
+pre {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+strong {
+  font-weight: 650;
+}
+
+small {
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* Listen */
+ul,
+ol {
+  padding-left: 1.35rem;
+}
+
+li + li {
+  margin-top: 0.35rem;
+}
+
+li > ul,
+li > ol {
+  margin: 0.35rem 0 0;
+}
+
+/* Definitionslisten (Impressum) */
+dt {
+  font-weight: 650;
+  margin-top: 0.75rem;
+}
+
+dd {
+  margin: 0.1rem 0 0;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Tabellen */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+}
+
+caption {
+  text-align: left;
+  font-weight: 650;
+  padding: 0 0 0.5rem;
+}
+
+th,
+td {
+  padding: 0.5rem 0.65rem;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--surface);
+  font-weight: 650;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--surface);
+}
+
+/* Zitate und Code */
+blockquote {
+  padding: 0.5rem 1rem;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+}
+
+code,
+pre {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.95em;
+}
+
+pre {
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Knopf, z. B. zum Play Store. Ohne href: nur ein Hinweis, noch kein Link. */
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.button:hover {
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+
+.button:not([href]) {
+  background: transparent;
+  color: var(--muted);
+  border: 2px dashed var(--border);
+  cursor: default;
+}
+
+/* Fuß */
+body > footer {
+  margin-top: 2rem;
+  padding: 1.5rem 0 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+body > footer p {
+  margin: 0 0 0.5rem;
+}
+
+body > footer a {
+  color: inherit;
+}
+
+@media print {
+  nav,
+  .button {
+    display: none;
+  }
+
+  body {
+    max-width: none;
+    font-size: 11pt;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
+/* Preisliste auf der Startseite: Name und Preis in einer Zeile, Beschreibung darunter */
+.prices { margin: 0.75rem 0 0; }
+.prices dt { display: flex; justify-content: space-between; gap: 1rem; font-weight: 600; margin-top: 0.75rem; }
+.prices dt span { white-space: nowrap; color: var(--accent); }
+.prices dd { margin: 0.15rem 0 0; color: var(--muted, inherit); font-size: 0.95em; }
