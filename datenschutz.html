@@ -48,7 +48,7 @@
 <ul>
   <li><strong>Fahrzeuge:</strong> Name, Hersteller, Modell, Kennzeichen, Fahrgestellnummer, Antrieb, Reifengröße, Kaufdatum und Kaufpreis, Fotos, Halteranzahl, Archivstatus.</li>
   <li><strong>Einträge:</strong> Reparatur, Wartung, TÜV/HU, Reifen, Unfall, Tuning, Tanken und Laden – mit Datum, km-Stand, Kosten, Werkstatt oder Eigenleistung, Einzelpositionen mit Teilenummern, Notizen, Tags und Garantie.</li>
-  <li><strong>Belege:</strong> Fotos und <abbr title="Portable Document Format">PDF</abbr>-Dateien, die du aufnimmst oder auswählst. Fotos werden beim Übernehmen je nach Einstellung „Fotogröße“ auf 800 bis 1600 Pixel verkleinert und als WebP ohne die Metadaten der Kamera-App (EXIF) gespeichert – also ohne Aufnahmeort, Gerät und Aufnahmezeit. Dadurch stehen diese Angaben auch nicht in Backups, im Drive-Backup oder in der Übergabedatei. Für die Anzeige legt die App kleine Vorschaubilder im Zwischenspeicher (Cache) des Geräts ab; sie stehen in keinem Backup. PDF-Dateien übernimmt die App unverändert.</li>
+  <li><strong>Belege:</strong> Fotos und <abbr title="Portable Document Format">PDF</abbr>-Dateien, die du aufnimmst oder auswählst. Fotos werden beim Übernehmen je nach Einstellung „Fotogröße“ auf 800 bis 1600 Pixel verkleinert (Fahrzeugfotos auf 2400 Pixel) und als WebP ohne die Metadaten der Kamera-App (EXIF) gespeichert – also ohne Aufnahmeort, Gerät und Aufnahmezeit. Dadurch stehen diese Angaben auch nicht in Backups, im Drive-Backup oder in der Übergabedatei. Für die Anzeige legt die App kleine Vorschaubilder im Zwischenspeicher (Cache) des Geräts ab; sie stehen in keinem Backup. PDF-Dateien übernimmt die App unverändert.</li>
   <li><strong>Erinnerungen und Erledigungen</strong> nach Datum, Kilometern oder beidem.</li>
   <li><strong>Reifensätze</strong> mit Größe, DOT-Nummer, Profiltiefe, Kaufdaten und Lagerort.</li>
   <li><strong>Experten-Ecke (technische Daten):</strong> Angaben, die du zu einem Fahrzeug einträgst – etwa Motoröl, Ölmenge, Reifendruck, Kühlmittel, Batterie. Freier Text, nur auf deinem Gerät und in deinem Backup; in einer Übergabe oder der Verkaufsmappe nur, wenn du es dort einschaltest.</li>
@@ -129,6 +129,15 @@
   <dt>Datenschutzerklärung</dt><dd><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></dd>
 </dl>
 
+<h3>Beleg scannen (Google ML Kit)</h3>
+<p>Beim Scannen eines Tankbelegs liest die App Betrag, Menge, Preis, Datum und km-Stand aus dem Foto. Das passiert vollständig auf deinem Gerät: Das Foto und der erkannte Text verlassen das Gerät nicht, und die App speichert den erkannten Text nicht. Du entscheidest, was übernommen wird.</p>
+<dl>
+  <dt>Anbieter</dt><dd>Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland (Google ML Kit)</dd>
+  <dt>Texterkennung</dt><dd>Das Erkennungsmodell ist in der App enthalten und läuft ohne Internetverbindung.</dd>
+  <dt>Dokumentenscanner</dt><dd>Optional bietet die App den Dokumentenscanner von Google an (Kanten erkennen, Perspektive ausgleichen). Er läuft in den Google-Play-Diensten deines Geräts; deren Modul lädt Android beim ersten Benutzen einmalig nach. Das aufgenommene Bild bleibt auf deinem Gerät und geht an die App zurück.</dd>
+  <dt>Datenschutzerklärung</dt><dd><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></dd>
+</dl>
+
 <h3>Google Play: Bewertung in der App</h3>
 <p>Nach einem Rangaufstieg oder dem zehnten Eintrag bittet die App die Play-Store-App deines Geräts, ihre Bewertungsabfrage zu zeigen – höchstens alle 60 Tage, nie in Formularen, bei gesperrter App oder während eines Backups.</p>
 <dl>
@@ -168,7 +177,7 @@
 <ul>
   <li><strong>Backup (.fuchs):</strong> enthält alle Daten der App inklusive Belegen, Firmen-Vorlagen samt PDF-Dateien, Einstellungen, Briefkopf und – wenn eingetragen – deinem Tankerkönig-API-Key. Nicht enthalten: PIN-Hash und Einstellungen der App-Sperre, Drive-Einstellungen, Käufe. Die Datei ist mit AES-256-GCM und einem in der App eingebauten Schlüssel verschlüsselt: Schutz vor zufälligem Mitlesen, kein Schutz vor gezieltem Angriff (siehe <a href="#drive">Abschnitt 6</a>).</li>
   <li><strong>Fahrzeugübergabe (.fuchs):</strong> enthält nur das gewählte Fahrzeug mit Steckbrief, Fotos, Einträgen samt Beträgen, Belegen, Reifensätzen, Erinnerungen und km-Ständen sowie die Halteranzahl; auf deinen Wunsch (Schalter „Experten-Daten mitgeben“) außerdem die ausgefüllten technischen Daten der Experten-Ecke. Nie enthalten: Kaufpreis und Kaufdatum, Fixkosten, Fahrzeugwerte, Kostenteilung, Logbuch, Teilelager, Firmen-Vorlagen, Einstellungen, API-Key, Favoriten, Preisalarme, Käufe. Verschlüsselt wie das Backup. Du verschickst die Datei selbst, zum Beispiel über den Teilen-Dialog; der Empfänger importiert sie in seiner App. Fotos gehen ohne Kamera-Metadaten an den Empfänger (<a href="#app">Abschnitt 3</a>); PDF-Belege unverändert.</li>
-  <li><strong>PDF und CSV:</strong> Dokumentation, Verkaufsmappe, CSV-Tabelle, Fahrtenbuch (Export des Logbuchs), Kaufvertrag und ausgefüllte Firmen-Vorlagen sind <strong>unverschlüsselt</strong>. Die Verkaufsmappe enthält keine Preise; die technischen Daten der Experten-Ecke stehen nur darin, wenn du sie einschaltest. Mit Pro steht dein Briefkopf im PDF, und die CSV kann die Kostenteilung mit den Namen der Beteiligten enthalten.</li>
+  <li><strong>PDF, Excel und CSV:</strong> Dokumentation, Verkaufsschild (Verkaufsmappe), Excel-Tabelle, Fahrtenbuch (Export des Logbuchs, auch als CSV), Kaufvertrag und ausgefüllte Firmen-Vorlagen sind <strong>unverschlüsselt</strong>. Das Verkaufsschild enthält nur, was du dafür eingibst (zum Beispiel Preis, Name, Telefonnummer, Ort, Link); diese Angaben speichert die App nicht. Der QR-Code enthält deinen Link oder deine Telefonnummer, sonst nichts. Die technischen Daten der Experten-Ecke stehen nur darin, wenn du sie einschaltest. Mit Pro steht dein Briefkopf im PDF, und die Excel-Tabelle kann die Kostenteilung mit den Namen der Beteiligten enthalten.</li>
   <li><strong>Kaufvertrag:</strong> Das PDF enthält die Angaben, die du für Verkäufer und Käufer einträgst – Namen und Anschriften, wenn angegeben auch Ausweisnummer und Telefon –, dazu Fahrzeugdaten, Kaufpreis und Übergabe. Es enthält damit Daten einer anderen Person, die du mit dem PDF weitergibst. Die App speichert diese Angaben nicht: Sie stehen nur im erzeugten PDF, nicht in der Datenbank, im Backup, im Drive-Backup oder in der Übergabedatei.</li>
   <li><strong>Ausgefüllte Firmen-Vorlagen (Pro):</strong> deine Vorlage mit den Fahrzeugdaten der platzierten Felder (zum Beispiel Kennzeichen, Fahrgestellnummer, km-Stand) und dem Namen aus dem Briefkopf. Das ausgefüllte PDF speichert die App nicht; nur die Vorlage selbst bleibt (<a href="#app">Abschnitt 3</a>).</li>
   <li><strong>Dein Speicherort, deine Verantwortung:</strong> Du wählst im Android-Dateidialog oder im Teilen-Dialog, wo eine Datei landet. Speicherst du sie in einer Cloud (etwa Google Drive oder Dropbox) oder sendest sie per Messenger oder E-Mail, gilt die Datenschutzerklärung dieses Anbieters. Ich erhalte diese Dateien nicht.</li>
@@ -219,7 +228,7 @@
 
 <h2 id="aenderungen">12. Änderungen dieser Erklärung</h2>
 <p>Wenn die App neue Funktionen bekommt oder sich Dienste Dritter ändern, passe ich diese Erklärung an. Die aktuelle Fassung findest du immer auf dieser Seite, über den Link im Play Store und in der App unter Einstellungen → Über. Das Datum der letzten Änderung steht hier:</p>
-<p><strong>Stand: 2. November 2026</strong></p>
+<p><strong>Stand: 7. November 2026</strong></p>
   </main>
 
   <footer>
